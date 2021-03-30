@@ -28,6 +28,30 @@ function App(props) {
     },
   ]);
 
+  const [playlistName, setPlaylistName] = useState("Test Playlist");
+  const [playlistTracks, setPlaylistTracks] = useState([
+    {
+      name: "Don't Speak",
+      artist: "No Doubt",
+      album: "Tragic Kingdom",
+      id: 4,
+    },
+    {
+      name: "Chandelier",
+      artist: "Sia",
+      album: "1000 forms of fear",
+      id: 5,
+    },
+  ]);
+
+  const addTrack = (track) => {
+    if (playlistTracks.find((playlistTrack) => playlistTrack.id === track.id)) {
+      return;
+    }
+
+    setPlaylistTracks([track, ...playlistTracks]);
+  };
+
   return (
     <div>
       <h1>
@@ -36,8 +60,11 @@ function App(props) {
       <div className="App">
         <SearchBar />
         <div className="App-playlist">
-          <SearchResults searchResults={searchResults} />
-          {/* <Playlist /> */}
+          <SearchResults searchResults={searchResults} onAdd={addTrack} />
+          <Playlist
+            playlistName={playlistName}
+            playlistTracks={playlistTracks}
+          />
         </div>
       </div>
     </div>
