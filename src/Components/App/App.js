@@ -52,6 +52,13 @@ function App(props) {
     setPlaylistTracks([track, ...playlistTracks]);
   };
 
+  const removeTrack = (track) => {
+    const filteredArray = playlistTracks.filter(
+      (playlistTrack) => playlistTrack.id !== track.id
+    );
+    setPlaylistTracks(filteredArray);
+  };
+
   return (
     <div>
       <h1>
@@ -64,6 +71,7 @@ function App(props) {
           <Playlist
             playlistName={playlistName}
             playlistTracks={playlistTracks}
+            onRemove={removeTrack}
           />
         </div>
       </div>
