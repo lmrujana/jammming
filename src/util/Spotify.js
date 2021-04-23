@@ -3,7 +3,7 @@ import config from "./config";
 let accessToken;
 const CLIENT_ID = config.client;
 // const CLIENT_ID = "e01227b4caae4f0986183c94f2c03c3e";
-const REDIRECT_URI = "http://localhost:3000/";
+const REDIRECT_URI = "http://female-owl.surge.sh/";
 
 const Spotify = {
   getAccessToken: function () {
